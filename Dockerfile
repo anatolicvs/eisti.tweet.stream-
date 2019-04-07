@@ -51,7 +51,7 @@ ENV PATH /home/ubuntu/anaconda3/bin:$PATH
 
 # Updating Anaconda packages
 RUN conda update conda
-RUN conda update anaconda
+RUN pip install findspark
 RUN conda update --all
 
 # Configuring access to Jupyter
