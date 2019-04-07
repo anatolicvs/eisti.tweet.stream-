@@ -39,11 +39,11 @@ RUN tar -xzf spark-2.4.1-bin-hadoop2.7.tgz && \
     mv spark-2.4.1-bin-hadoop2.7 /spark && \
     rm spark-2.4.1-bin-hadoop2.7.tgz
 
-RUN wget https://repo.continuum.io/archive/Anaconda3-2018.12-Linux-x86_64.sh
+RUN wget https://repo.continuum.io/archive/Anaconda3-2019.03-Linux-x86_64.sh
 # https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
-RUN bash Anaconda3-2018.12-Linux-x86_64.sh -b
+RUN bash Anaconda3-2019.03-Linux-x86_64.sh -b
 # Anaconda3-5.0.1-Linux-x86_64.sh -b
-RUN rm Anaconda3-2018.12-Linux-x86_64.sh
+RUN rm Anaconda3-2019.03-Linux-x86_64.sh
 
 # Set path to conda
 #ENV PATH /root/anaconda3/bin:$PATH
