@@ -12,9 +12,9 @@ RUN apt-get install -y default-jre
 
 RUN apt-get install -y scala
 
-RUN apt-get install net-tools
+RUN apt-get install -y net-tools
 
-RUN apt-get install git
+RUN apt-get install -y git
 
 RUN adduser --disabled-password --gecos '' ubuntu
 RUN adduser ubuntu sudo
@@ -24,17 +24,20 @@ WORKDIR /home/ubuntu/
 RUN chmod a+rwx /home/ubuntu/
 RUN echo `pwd`
 
-RUN wget http://apache.mirror.anlx.net/spark/spark-2.4.0/spark-2.4.0-bin-hadoop2.7.tgz
+COPY start-worker.sh ~/start-worker.sh
+COPY start-master.sh ~/start-master.sh
 
-RUN tar -xzf spark-2.4.0-bin-hadoop2.7.tgz && \
-    mv spark-2.4.0-bin-hadoop2.7 /spark && \
-    rm spark-2.4.0-bin-hadoop2.7.tgz
+# RUN chmod +x ~/start-worker.sh && chmod +x ~/start-master.sh
 
-COPY start-worker.sh /start-worker.sh
+RUN wget http://apache.mirror.anlx.net/spark/spark-2.4.1/spark-2.4.1-bin-hadoop2.7.tgz
 
-COPY start-master.sh /start-master.sh
+RUN sudo mkdir /spark
 
-RUN chmod +x start-worker.sh && chmod +x start-master.sh
+RUN sudo chmod 777 /spark
+
+RUN tar -xzf spark-2.4.1-bin-hadoop2.7.tgz && \
+    mv spark-2.4.1-bin-hadoop2.7 /spark && \
+    rm spark-2.4.1-bin-hadoop2.7.tgz
 
 RUN wget https://repo.continuum.io/archive/Anaconda3-2018.12-Linux-x86_64.sh
 # https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
@@ -65,9 +68,9 @@ RUN export PYSPARK_PYTHON=python3
 
 RUN conda install pyspark
 
-RUN chmod 777 /spark/spark-2.4.0-bin-hadoop2.7
-RUN chmod 777 /spark/spark-2.4.0-bin-hadoop2.7/python
-RUN chmod 777 /spark/spark-2.4.0-bin-hadoop2.7/python/pyspark
+RUN chmod 777 /spark/spark-2.4.1-bin-hadoop2.7
+RUN chmod 777 /spark/spark-2.4.1-bin-hadoop2.7/python
+RUN chmod 777 /spark/spark-2.4.1-bin-hadoop2.7/python/pyspark
 
 # Jupyter listens port: 8888
 EXPOSE 8888
