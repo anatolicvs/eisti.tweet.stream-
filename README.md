@@ -1,7 +1,7 @@
 # EISTI Big Data and Advanced Analytics
 
       To run this image you have two option first one is using my build from dockerhub, second is build your own docker image with my dockerfile.
-
+      
       docker pull aytacozkan/eisti.tweet.stream
 
       docker build -t aytacozkan/conda1 .

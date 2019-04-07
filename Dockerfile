@@ -24,8 +24,8 @@ WORKDIR /home/ubuntu/
 RUN chmod a+rwx /home/ubuntu/
 RUN echo `pwd`
 
-COPY start-worker.sh ~/start-worker.sh
-COPY start-master.sh ~/start-master.sh
+# COPY start-worker.sh ~/start-worker.sh
+# COPY start-master.sh ~/start-master.sh
 
 # RUN chmod +x ~/start-worker.sh && chmod +x ~/start-master.sh
 
