@@ -59,7 +59,7 @@ RUN mkdir /home/ubuntu/notebooks
 RUN jupyter notebook --generate-config --allow-root
 RUN echo "c.NotebookApp.password = u'sha1:6a3f528eec40:6e896b6e4828f525a6e20e5411cd1c8075d68619'" >> /home/ubuntu/.jupyter/jupyter_notebook_config.py
 
-RUN export SPARK_HOME='/spark/spark-2.4.0-bin-hadoop2.7'
+RUN export SPARK_HOME='/spark/spark-2.4.1-bin-hadoop2.7'
 RUN export PATH=$SPARK_HOME:$PATH
 RUN export PYTHONPATH=$SPARK_HOME/python:$PYTHONPATH
 RUN export PYSPARK_DRIVER_PYTHON="jupyter"
