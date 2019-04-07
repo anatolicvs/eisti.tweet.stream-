@@ -49,15 +49,7 @@ RUN rm Anaconda3-2019.03-Linux-x86_64.sh
 #ENV PATH /root/anaconda3/bin:$PATH
 ENV PATH /home/ubuntu/anaconda3/bin:$PATH
 
-# Updating Anaconda packages
-RUN conda update conda
-RUN pip install findspark
-RUN conda update --all
-
-# Configuring access to Jupyter
-RUN mkdir /home/ubuntu/notebooks
-RUN jupyter notebook --generate-config --allow-root
-RUN echo "c.NotebookApp.password = u'sha1:6a3f528eec40:6e896b6e4828f525a6e20e5411cd1c8075d68619'" >> /home/ubuntu/.jupyter/jupyter_notebook_config.py
+RUN conda install pyspark
 
 RUN export SPARK_HOME='/spark/spark-2.4.1-bin-hadoop2.7'
 RUN export PATH=$SPARK_HOME:$PATH
@@ -66,7 +58,17 @@ RUN export PYSPARK_DRIVER_PYTHON="jupyter"
 RUN export PYSPARK_DRIVER_PYTHON=OPTS="notebook"
 RUN export PYSPARK_PYTHON=python3
 
-RUN conda install pyspark
+# Updating Anaconda packages
+RUN conda update conda
+
+RUN pip install findspark
+RUN conda update --all
+
+# Configuring access to Jupyter
+RUN mkdir /home/ubuntu/notebooks
+RUN jupyter notebook --generate-config --allow-root
+RUN echo "c.NotebookApp.password = u'sha1:6a3f528eec40:6e896b6e4828f525a6e20e5411cd1c8075d68619'" >> /home/ubuntu/.jupyter/jupyter_notebook_config.py
+
 
 RUN chmod 777 /spark/spark-2.4.1-bin-hadoop2.7
 RUN chmod 777 /spark/spark-2.4.1-bin-hadoop2.7/python
