@@ -24,10 +24,10 @@ WORKDIR /home/ubuntu/
 RUN chmod a+rwx /home/ubuntu/
 RUN echo `pwd`
 
-COPY start-worker.sh /start-worker.sh
-COPY start-master.sh /start-master.sh
+COPY start-worker.sh ./
+COPY start-master.sh ./
 
-RUN chmod +x /start-worker.sh && chmod +x /start-master.sh
+RUN chmod +x ./start-worker.sh && chmod +x ./start-master.sh
 
 RUN wget http://apache.mirror.anlx.net/spark/spark-2.4.1/spark-2.4.1-bin-hadoop2.7.tgz
 
