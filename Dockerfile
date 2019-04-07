@@ -67,7 +67,6 @@ RUN export PYSPARK_DRIVER_PYTHON=OPTS="notebook"
 RUN export PYSPARK_PYTHON=python3
 
 RUN conda install pyspark
-RUN conda install findspark
 
 RUN chmod 777 /spark/spark-2.4.1-bin-hadoop2.7
 RUN chmod 777 /spark/spark-2.4.1-bin-hadoop2.7/python
