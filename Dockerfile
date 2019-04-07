@@ -27,7 +27,7 @@ RUN echo `pwd`
 COPY start-worker.sh ./
 COPY start-master.sh ./
 
-RUN sudo chmod +x ./start-worker.sh && chmod +x ./start-master.sh
+RUN sudo chmod +x ./start-worker.sh && sudo chmod +x ./start-master.sh
 
 RUN wget http://apache.mirror.anlx.net/spark/spark-2.4.1/spark-2.4.1-bin-hadoop2.7.tgz
 
